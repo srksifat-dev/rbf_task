@@ -1,16 +1,7 @@
 # rbf_task
 
-A new Flutter project.
+There were three tasks and I have completed all tasks Alhamdulillah. Feel free to check the code and the video as well.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+https://github.com/srksifat-dev/rbf_task/assets/56959596/697326c4-5cc9-469d-acf1-6aa512a3c3ce
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
