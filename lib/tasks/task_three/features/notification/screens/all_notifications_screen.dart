@@ -161,11 +161,11 @@ class AllNotificationsScreen extends StatelessWidget {
                                   .selectedNotificationList.isNotEmpty
                               ? () async {
                                   await updateNotificationController
-                                      .deleteNotifications();
+                                      .markAsRead();
                                 }
                               : null,
                           child:
-                              updateNotificationController.deleteLoading.value
+                              updateNotificationController.markAsReadLoading.value
                                   ? const Loader()
                                   : const Text("Mark as read"),
                         ),
