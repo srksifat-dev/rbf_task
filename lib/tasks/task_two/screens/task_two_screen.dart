@@ -5,33 +5,17 @@ import 'package:rbf_task/core/utils/device_size.dart';
 
 import '../models/page_model.dart';
 
-class CustomNavigationRailScreen extends StatefulWidget {
-  const CustomNavigationRailScreen({super.key});
+class TaskTwoScreen extends StatefulWidget {
+  const TaskTwoScreen({super.key});
 
   @override
-  State<CustomNavigationRailScreen> createState() =>
-      _CustomNavigationRailScreenState();
+  State<TaskTwoScreen> createState() => _TaskTwoScreenState();
 }
 
-class _CustomNavigationRailScreenState
-    extends State<CustomNavigationRailScreen> {
+class _TaskTwoScreenState extends State<TaskTwoScreen> {
   int pageIndex = 0;
   double animatedContainerHeight = 100;
-  List<PageModel> pages = [
-    PageModel(bodyContent: "Home", icon: Icons.home, iconLabel: "Home"),
-    PageModel(
-        bodyContent: "Table",
-        icon: Icons.grid_view_rounded,
-        iconLabel: "Table"),
-    PageModel(
-        bodyContent: "Order", icon: Icons.shopping_cart, iconLabel: "Order"),
-    PageModel(
-        bodyContent: "History", icon: Icons.history, iconLabel: "History"),
-    PageModel(
-        bodyContent: "Notification",
-        icon: Icons.notifications,
-        iconLabel: "Notification"),
-  ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +24,7 @@ class _CustomNavigationRailScreenState
       ),
       body: Row(
         children: [
+          // Custom Navigation rail
           Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -185,7 +170,12 @@ class _CustomNavigationRailScreenState
                 ],
               )
             ],
-          )
+          ),
+
+          // Body
+          Expanded(child: Center(
+            child: pageIndex == pages.length + 1 ? Text("Account") : Text(pages[pageIndex].bodyContent),
+          ))
         ],
       ),
     );

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:rbf_task/features/task_one/widgets/obsecuring_text_input_formatter.dart';
+import 'package:rbf_task/tasks/task_one/widgets/obsecuring_text_input_formatter.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class TaskOneScreen extends StatefulWidget {
+  const TaskOneScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<TaskOneScreen> createState() => _TaskOneScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _TaskOneScreenState extends State<TaskOneScreen> {
+  // Text Controllers
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
 
+// Focus Nodes
   late FocusNode _emailFocusNode;
   late FocusNode _passwordFocusNode;
   @override
@@ -80,6 +81,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 Navigator.of(context).pop();
               },
               inputFormatters: [
+                // Using Custom Input Formatter to hide all character input into password textfield
                 ObscuringTextInputFormatter(),
               ],
               textInputAction: TextInputAction.done,

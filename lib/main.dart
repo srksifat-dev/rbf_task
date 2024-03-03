@@ -1,11 +1,20 @@
+import 'dart:io';
+
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-import 'package:rbf_task/features/task_one/screens/auth_screen.dart';
-import 'package:rbf_task/features/task_two/screens/custom_navigation_rail_screen.dart';
+import 'package:get/get.dart';
+import 'package:rbf_task/tasks/task_one/screens/task_one_screen.dart';
+import 'package:rbf_task/tasks/task_three/features/auth/controller/login_controller.dart';
+import 'package:rbf_task/core/http_override.dart';
+import 'package:rbf_task/tasks/task_three/features/notification/screens/notification_screen.dart';
+import 'package:rbf_task/tasks/task_two/screens/task_two_screen.dart';
 
 import 'theme/app_colors.dart';
 
-void main() {
+Future<void> main() async {
+  // To avoid Handshake Exception
+  HttpOverrides.global = MyHttpOverrides();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -14,8 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // to Use Dynamic Color based on user device wallpaper
     return DynamicColorBuilder(builder: (lightDynamic, darkDynamic) {
-      return MaterialApp(
+      return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: lightDynamic ?? lightColorScheme,
@@ -24,15 +35,15 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: darkDynamic ?? darkColorScheme,
         ),
-        home: const MyHomePage(),
+        home: MyHomePage(),
       );
     });
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
+  MyHomePage({super.key});
+  final LoginController loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,17 +58,21 @@ class MyHomePage extends StatelessWidget {
               FilledButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const AuthScreen()));
+                        builder: (context) => const TaskOneScreen()));
                   },
                   child: const Text("Task One")),
               FilledButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            const CustomNavigationRailScreen()));
+                        builder: (context) => const TaskTwoScreen()));
                   },
                   child: const Text("Task Two")),
-              FilledButton(onPressed: () {}, child: const Text("Task Three")),
+              FilledButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => NotificationScreen()));
+                  },
+                  child: const Text("Task Three")),
             ],
           ),
         ));
